@@ -1,4 +1,4 @@
-class Node {
+class SinglyLinkedListNode {
     constructor(val) {
         this.val = val;
         this.next = null;
@@ -13,7 +13,7 @@ class SinglyLinkedList {
     }
 
     push(val) {
-        const newNode = new Node(val);
+        const newNode = new SinglyLinkedListNode(val);
         if (!this.head) {
             this.head = newNode;
             this.tail = this.head;
@@ -27,7 +27,7 @@ class SinglyLinkedList {
     }
 
     unshift(val) {
-        const newNode = new Node(val);
+        const newNode = new SinglyLinkedListNode(val);
         if (!this.head) {
             this.head = newNode;
             this.tail = this.head;
@@ -95,7 +95,7 @@ class SinglyLinkedList {
         if (index < 0 || index > this.length) return false;
         if (index === 0) return !!this.unshift(val);
         if (index === this.length) return !!this.push(val);
-        const newNode = new Node(val);
+        const newNode = new SinglyLinkedListNode(val);
         const previousNode = this.get(index - 1);
         const temp = previousNode.next;
         previousNode.next = newNode;
@@ -116,9 +116,9 @@ class SinglyLinkedList {
     }
 }
 
-var list = new SinglyLinkedList();
-list.push("hello");
-list.push("goodbye");
-list.push(99);
-list.push("yo yo yo");
-console.log(list);
+// var list = new SinglyLinkedList();
+// list.push("hello");
+// list.push("goodbye");
+// list.push(99);
+// list.push("yo yo yo");
+// console.log(list);
