@@ -7,7 +7,7 @@ class DoublyLinkedListNode {
 }
 
 class DoublyLinkedList {
-    constructor(){
+    constructor() {
         this.head = null;
         this.tail = null;
         this.length = 0;
@@ -18,14 +18,28 @@ class DoublyLinkedList {
         if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
-        }        
-        else {
+        } else {
             this.tail.next = newNode;
             newNode.prev = this.tail;
             this.tail = newNode;
         }
         this.length++;
         return this;
+    }
+    
+    pop() {
+        if (!this.head) return undefined;
+        const removedNode = this.tail;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = removedNode.prev;
+            this.tail.next = null;
+            removedNode.prev = null;
+        }
+        this.length--;
+        return removedNode;
     }
 }
 
