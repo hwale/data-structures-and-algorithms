@@ -75,16 +75,17 @@ class DoublyLinkedList {
 
     get(index) {
         if (index < 0 || index >= this.length) return undefined;
+        let currentIndex, current;
         if (index <= this.length / 2) {
-            let currentIndex = 0;
-            let current = this.head;
+            currentIndex = 0;
+            current = this.head;
             while (currentIndex !== index) {
                 current = current.next;
                 currentIndex++;
             }
         } else {
-            let currentIndex = this.length - 1;
-            let current = this.tail;
+            currentIndex = this.length - 1;
+            current = this.tail;
             while (currentIndex !== index) {
                 current = current.prev;
                 currentIndex--;
