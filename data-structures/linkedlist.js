@@ -17,8 +17,7 @@ class SinglyLinkedList {
         if (!this.head) {
             this.head = newNode;
             this.tail = this.head;
-        }
-        else {
+        } else {
             this.tail.next = newNode;
             this.tail = newNode;
         }
@@ -31,8 +30,7 @@ class SinglyLinkedList {
         if (!this.head) {
             this.head = newNode;
             this.tail = this.head;
-        }
-        else {
+        } else {
             newNode.next = this.head;
             this.head = newNode;
         }
