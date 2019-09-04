@@ -28,8 +28,6 @@ class DoublyLinkedList {
     }
     
     pop() {
-        // if the doubly linked list is empty, there is nothing to pop. return undefined.
-        // save removed node to a variable. 
         if (!this.head) return undefined;
         const removedNode = this.tail;
         if (this.length === 1) {
@@ -92,6 +90,45 @@ class DoublyLinkedList {
             }
         }
         return current;
+    }
+
+    set(index, val) {
+        const foundNode = get(index);
+        if (foundNode) {
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
+
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false;
+        if (index === 0) return !!this.unshift(val);
+        if (index === this.length) return !!this.push(val);
+        const newNode = new DoublyLinkedListNode(val);
+        const prevNode = this.get(index - 1);
+        const nextNode = prevNode.next;
+        prevNode.next = newNode;
+        nextNode.prev = newNode;
+        newNode.prev = prevNode;
+        newNode.next = nextNode;
+        this.length++;
+        return true;
+    }
+
+    remove(index) {
+        if (index < 0 || index >= this.length) return undefined;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+        const prevNode = this.get(index - 1);
+        const removedNode = prevNode.next;
+        const nextNode = removedNode.next;
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+        removedNode.prev = null;
+        removedNode.next = null;
+        this.length--;
+        return removedNode;
     }
 }
 

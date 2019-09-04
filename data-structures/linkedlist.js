@@ -104,19 +104,13 @@ class SinglyLinkedList {
 
     remove(index) {
         if (index < 0 || index >= this.length) return null;
-        if (index === 0) return !!this.shift();
-        if (index === this.length - 1) return !!this.pop();
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
         const previousNode = this.get(index - 1);
         const removedNode = previousNode.next;
         previousNode.next = removedNode.next;
+        removedNode.next = null;
         this.length--;
         return removedNode;
     }
 }
-
-// var list = new SinglyLinkedList();
-// list.push("hello");
-// list.push("goodbye");
-// list.push(99);
-// list.push("yo yo yo");
-// console.log(list);
